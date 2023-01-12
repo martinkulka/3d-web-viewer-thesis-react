@@ -1,7 +1,8 @@
 import MainPage from './pages/MainPage';
+import ViewerPage from './pages/ViewerPage';
 
 const App = () => {
-  return <MainPage />;
+  return <ViewerPage />;
 };
 
 export default App;
