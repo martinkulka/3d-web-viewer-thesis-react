@@ -1,7 +1,16 @@
 import { useState, useRef, useEffect } from 'react';
 import { Niivue } from '@niivue/niivue';
 
-const nv = new Niivue();
+const handleIntensityChange = (data) => {
+  const intensity = `${data.vox[0]}, ${data.vox[1]}, ${data.vox[2]}`;
+  document.getElementById('intensity').innerHTML = intensity;
+};
+
+const nv = new Niivue({
+  backColor: [0.066, 0.094, 0.1529, 1],
+  dragAndDropEnabled: true,
+  onLocationChange: handleIntensityChange,
+});
 
 const NiiViewer = ({ imageUrl }) => {
   const canvas = useRef();
@@ -10,51 +19,33 @@ const NiiViewer = ({ imageUrl }) => {
     const volumeList = [
       {
         url: imageUrl,
+        opacity: 1,
       },
     ];
 
+    nv.opts.multiplanarForceRender = true;
     nv.attachToCanvas(canvas.current);
     nv.loadVolumes(volumeList);
+    nv.setSliceMM(true);
+    nv.setSliceType(nv.sliceTypeMultiplanar);
   }, [imageUrl]);
 
-  const nvUpdateSliceType = (newSliceType) => {
-    if (newSliceType === 'axial') {
-      nv.setSliceType(nv.sliceTypeAxial);
-    } else if (newSliceType === 'coronal') {
-      nv.setSliceType(nv.sliceTypeCoronal);
-    } else if (newSliceType === 'sagittal') {
-      nv.setSliceType(nv.sliceTypeSagittal);
-    } else if (newSliceType === 'multi') {
-      nv.setSliceType(nv.sliceTypeMultiplanar);
-    } else if (newSliceType === '3d') {
-      nv.setSliceType(nv.sliceTypeRender);
-    }
-  };
-
-  const handleUpdateSliceType = (event) => {
-    nvUpdateSliceType(event.target.value);
+  const handleHeader = () => {
+    alert(nv.volumes[0].hdr.toFormattedString());
   };
 
   return (
     <div>
-      <div className="text-center">
-        <select onChange={handleUpdateSliceType}>
-          <option value="axial">Axial</option>
-          <option value="coronal">Coronal</option>
-          <option value="sagittal">Sagittal</option>
-          <option selected value="multi">
-            Multiplanar
-          </option>
-          <option value="3d">3D</option>
-        </select>
+      <canvas className="absolute z-0" ref={canvas} />
+      <div className="absolute inset-x-0 bottom-0 z-10 flex h-16 w-screen justify-center bg-gray-800">
+        <h2
+          id="intensity"
+          className="my-auto mx-6 h-8 font-roboto text-2xl font-bold text-white"
+        ></h2>
+        <button type="button" onClick={handleHeader}>
+          click
+        </button>
       </div>
-
-      <canvas
-        className="active:border-none"
-        ref={canvas}
-        height={480}
-        width={640}
-      />
     </div>
   );
 };
