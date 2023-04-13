@@ -14,6 +14,7 @@ const nv = new Niivue({
   crosshairColor: [0.066, 0.094, 0.1529, 1],
   dragAndDropEnabled: true,
   onLocationChange: handleIntensityChange,
+  isResizeCanvas: false,
 });
 
 const ViewerPage = () => {

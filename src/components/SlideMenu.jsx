@@ -1,4 +1,5 @@
 import { Dialog, Transition } from '@headlessui/react';
+import FastMarchingForm from '../layouts/FastMarchingForm';
 
 const SlideMenu = ({ show, onClose }) => {
   return (
@@ -17,7 +18,7 @@ const SlideMenu = ({ show, onClose }) => {
 
         <div className="fixed inset-0 overflow-hidden">
           <div className="absolute inset-0 overflow-hidden">
-            <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full">
+            <div className="fixed inset-y-0 right-0 flex max-w-full">
               <Transition.Child
                 enter="transform transition ease-in-out duration-300 lg:duration-250"
                 enterFrom="translate-x-full"
@@ -26,16 +27,15 @@ const SlideMenu = ({ show, onClose }) => {
                 leaveFrom="translate-x-0"
                 leaveTo="translate-x-full"
               >
-                <Dialog.Panel className="pointer-events-auto relative h-screen w-screen max-w-2xl">
+                <Dialog.Panel className="relative h-screen w-screen max-w-2xl">
                   <div className="flex h-full flex-col bg-gray-800 py-6">
                     <div className="px-4 sm:px-6">
                       <Dialog.Title className="font-roboto text-base font-semibold leading-6 text-white">
                         Options
                       </Dialog.Title>
                     </div>
-                    <div className="relative mt-6 flex-1 px-4 text-white sm:px-6">
-                      chuj pojebany
-                    </div>
+
+                    <FastMarchingForm />
                   </div>
                 </Dialog.Panel>
               </Transition.Child>
