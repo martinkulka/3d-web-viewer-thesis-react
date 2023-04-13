@@ -1,18 +1,6 @@
-import { useState, useRef, useEffect } from 'react';
-import { Niivue, NVImage } from '@niivue/niivue';
+import { useRef, useEffect } from 'react';
 
-const handleIntensityChange = (data) => {
-  const intensity = `${data.vox[0]}, ${data.vox[1]}, ${data.vox[2]}`;
-  document.getElementById('intensity').innerHTML = intensity;
-};
-
-const nv = new Niivue({
-  backColor: [0.066, 0.094, 0.1529, 1],
-  dragAndDropEnabled: true,
-  onLocationChange: handleIntensityChange,
-});
-
-const NiiViewer = ({ imageUrl }) => {
+const NiiViewer = ({ nv, imageUrl }) => {
   const canvas = useRef();
 
   useEffect(() => {
@@ -24,9 +12,10 @@ const NiiViewer = ({ imageUrl }) => {
     ];
 
     nv.opts.multiplanarForceRender = true;
+    nv.opts.fontColor = 
     nv.attachToCanvas(canvas.current);
     nv.loadVolumes(volumeList);
-    nv.setSliceMM(true);
+    // nv.setSliceMM(true);
     nv.setSliceType(nv.sliceTypeMultiplanar);
   }, [imageUrl]);
 
