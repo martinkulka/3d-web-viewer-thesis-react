@@ -12,7 +12,6 @@ const NiiViewer = ({ nv, imageUrl }) => {
     ];
 
     nv.opts.multiplanarForceRender = true;
-    nv.opts.fontColor = 
     nv.attachToCanvas(canvas.current);
     nv.loadVolumes(volumeList);
     // nv.setSliceMM(true);

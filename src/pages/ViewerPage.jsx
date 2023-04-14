@@ -83,7 +83,7 @@ const ViewerPage = () => {
             imageUrl="http://127.0.0.1:8000/api/input_file.nii.gz"
           />
           <ViewPicker handleChange={handleViewChange} />
-          <MainMenu />
+          <MainMenu nv={nv} />
         </>
       ) : (
         <div className="absolute z-10 h-full w-full bg-gray-900" />

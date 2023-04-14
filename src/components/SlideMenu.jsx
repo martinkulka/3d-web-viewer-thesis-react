@@ -1,7 +1,7 @@
 import { Dialog, Transition } from '@headlessui/react';
 import FastMarchingForm from '../layouts/FastMarchingForm';
 
-const SlideMenu = ({ show, onClose }) => {
+const SlideMenu = ({ nv, show, onClose }) => {
   return (
     <Transition.Root show={show}>
       <Dialog as="div" className="relative z-30" onClose={onClose}>
@@ -29,13 +29,13 @@ const SlideMenu = ({ show, onClose }) => {
               >
                 <Dialog.Panel className="relative h-screen w-screen max-w-2xl">
                   <div className="flex h-full flex-col bg-gray-800 py-6">
-                    <div className="px-4 ml-2 mb-3">
+                    <div className="ml-2 mb-3 px-4">
                       <Dialog.Title className="font-roboto text-lg font-semibold leading-6 text-white">
                         Options
                       </Dialog.Title>
                     </div>
 
-                    <FastMarchingForm />
+                    <FastMarchingForm nv={nv} />
                   </div>
                 </Dialog.Panel>
               </Transition.Child>

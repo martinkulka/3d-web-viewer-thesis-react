@@ -2,7 +2,7 @@ import { useState } from 'react';
 import MenuButton from '../components/MenuButton';
 import SlideMenu from '../components/SlideMenu';
 
-const MainMenu = () => {
+const MainMenu = ({ nv }) => {
   const [open, setOpen] = useState(false);
 
   const handleOpening = () => {
@@ -11,7 +11,7 @@ const MainMenu = () => {
 
   return (
     <>
-      <SlideMenu show={open} onClose={setOpen} />
+      <SlideMenu nv={nv} show={open} onClose={setOpen} />
       <MenuButton handleOpening={handleOpening} />
     </>
   );

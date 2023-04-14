@@ -1,13 +1,43 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { NVImage } from '@niivue/niivue';
 import SeedManipulation from './SeedManipulation';
+import {
+  getSeedsFromObject,
+  getSeedStringfromSeeds,
+  makeFormDataObjectFromData,
+  getObjectWithoutSeeds,
+} from '../utils';
 
-const FastMarchingForm = () => {
+const FastMarchingForm = ({ nv }) => {
   const [seeds, setSeeds] = useState(['seed1']);
   const { register, handleSubmit } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = (segmentationParameters) => {
+    console.log(segmentationParameters);
+    const objectWithoutSeeds = getObjectWithoutSeeds(segmentationParameters);
+    const formData = makeFormDataObjectFromData(objectWithoutSeeds);
+
+    const formSeeds = getSeedsFromObject(segmentationParameters);
+    const seedString = getSeedStringfromSeeds(formSeeds);
+
+    formData.append('seeds', seedString);
+    console.log(formData);
+
+    fetch('http://127.0.0.1:8000/api/fast_marching/', {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+      },
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        nv.addVolumeFromUrl({
+          url: 'http://127.0.0.1:8000/api/segmentation.nii.gz',
+        });
+      });
   };
 
   const handleAddSeed = () => {
@@ -47,7 +77,7 @@ const FastMarchingForm = () => {
               type="number"
               step="0.1"
               className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-              {...register('alpha', { min: 0.1, max: 99 })}
+              {...register('alpha', { min: -99, max: 99 })}
             />
           </div>
 
@@ -59,7 +89,7 @@ const FastMarchingForm = () => {
               type="number"
               step="0.1"
               className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-              {...register('beta', { min: 0.1, max: 99 })}
+              {...register('beta', { min: -99, max: 99 })}
             />
           </div>
         </div>
