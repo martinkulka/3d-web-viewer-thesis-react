@@ -29,8 +29,8 @@ const SlideMenu = ({ show, onClose }) => {
               >
                 <Dialog.Panel className="relative h-screen w-screen max-w-2xl">
                   <div className="flex h-full flex-col bg-gray-800 py-6">
-                    <div className="px-4 sm:px-6">
-                      <Dialog.Title className="font-roboto text-base font-semibold leading-6 text-white">
+                    <div className="px-4 ml-2 mb-3">
+                      <Dialog.Title className="font-roboto text-lg font-semibold leading-6 text-white">
                         Options
                       </Dialog.Title>
                     </div>
