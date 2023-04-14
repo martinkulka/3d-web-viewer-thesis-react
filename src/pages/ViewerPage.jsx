@@ -42,8 +42,6 @@ const ViewerPage = () => {
   };
 
   const handleViewChange = (value) => {
-    console.log(value);
-
     switch (value) {
       case 'axial':
         nv.setSliceType(nv.sliceTypeAxial);

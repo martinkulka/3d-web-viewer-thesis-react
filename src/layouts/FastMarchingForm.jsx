@@ -6,7 +6,9 @@ const FastMarchingForm = () => {
   const [seeds, setSeeds] = useState(['seed1']);
   const { register, handleSubmit } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    console.log(data);
+  };
 
   const handleAddSeed = () => {
     const numberOfSeeds = seeds.length;
@@ -103,7 +105,10 @@ const FastMarchingForm = () => {
           removeSeed={handleRemoveSeed}
         />
 
-        <input type="submit" />
+        <input
+          type="submit"
+          className="block h-10 w-16 rounded-lg bg-gray-700 hover:bg-gray-600"
+        />
       </div>
     </form>
   );
