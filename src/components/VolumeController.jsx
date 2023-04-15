@@ -13,7 +13,7 @@ const VolumeController = ({ volume }) => {
   };
 
   return (
-    <div className="mx-6 my-2">
+    <div className="mx-6 my-2 pt-8 pb-4">
       <div className="flex flex-row justify-between">
         <p className="font-roboto text-lg text-white">Opacity</p>
         <input
@@ -26,6 +26,11 @@ const VolumeController = ({ volume }) => {
           onChange={handleOpacityChange}
         />
       </div>
+      <h1>cock</h1>
+      <h1>cock</h1>
+      <h1>cock</h1>
+      <h1>cock</h1>
+      <h1>cock</h1>
     </div>
   );
 };
