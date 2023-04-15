@@ -1,3 +1,4 @@
+import { DebounceInput } from 'react-debounce-input';
 import { useState, useContext } from 'react';
 import { NiivueContext } from '../NiivueContext';
 
@@ -10,14 +11,17 @@ const VolumeController = ({ volume }) => {
   const handleOpacityChange = (event) => {
     setOpacity(event.target.value);
     nv.setOpacity(volume, event.target.value);
+    nv.updateGLVolume();
   };
 
   return (
     <div className="mx-6 my-2 pt-8 pb-4">
       <div className="flex flex-row justify-between">
         <p className="font-roboto text-lg text-white">Opacity</p>
-        <input
+        <DebounceInput
           type="range"
+          minLength={1}
+          debounceTimeout={200}
           min="0"
           max="1"
           value={opacity}
