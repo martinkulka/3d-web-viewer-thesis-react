@@ -1,6 +1,8 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useContext } from 'react';
+import { NiivueContext } from '../NiivueContext';
 
-const NiiViewer = ({ nv, imageUrl }) => {
+const NiiViewer = ({ imageUrl }) => {
+  const nv = useContext(NiivueContext);
   const canvas = useRef();
 
   useEffect(() => {

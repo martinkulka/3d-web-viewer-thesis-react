@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { NVImage } from '@niivue/niivue';
+import { NiivueContext } from '../NiivueContext';
 import SeedManipulation from './SeedManipulation';
 import {
   getSeedsFromObject,
@@ -9,7 +9,8 @@ import {
   getObjectWithoutSeeds,
 } from '../utils';
 
-const FastMarchingForm = ({ nv }) => {
+const FastMarchingForm = () => {
+  const nv = useContext(NiivueContext);
   const [seeds, setSeeds] = useState(['seed1']);
   const { register, handleSubmit } = useForm();
 
@@ -135,10 +136,13 @@ const FastMarchingForm = ({ nv }) => {
           removeSeed={handleRemoveSeed}
         />
 
-        <input
-          type="submit"
-          className="block h-10 w-16 rounded-lg bg-gray-700 hover:bg-gray-600"
-        />
+        <div className="flex justify-center">
+          <input
+            type="submit"
+            value="Segment"
+            className="mt-4 block h-12 w-32 cursor-pointer rounded-lg bg-sky-400 font-roboto hover:bg-sky-300"
+          />
+        </div>
       </div>
     </form>
   );
