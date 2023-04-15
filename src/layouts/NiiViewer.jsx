@@ -18,6 +18,7 @@ const NiiViewer = ({ imageUrl }) => {
     nv.loadVolumes(volumeList);
     // nv.setSliceMM(true);
     nv.setSliceType(nv.sliceTypeMultiplanar);
+    console.log(nv.volumes);
   }, [imageUrl]);
 
   return (

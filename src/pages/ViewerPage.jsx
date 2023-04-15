@@ -3,6 +3,7 @@ import { NiivueContext } from '../NiivueContext';
 import NiiViewer from '../layouts/NiiViewer';
 import ViewPicker from '../layouts/ViewPicker';
 import MainMenu from '../layouts/MainMenu';
+import ChartPieIcon from '../assets/ChartPieIcon';
 
 const ViewerPage = () => {
   const nv = useContext(NiivueContext);
@@ -33,7 +34,8 @@ const ViewerPage = () => {
     <div>
       <NiivueContext.Provider value={nv}>
         <div className="fixed z-20 flex h-12 w-screen justify-start bg-gray-800">
-          <h1 className="my-auto mx-6 h-8 font-roboto text-lg font-bold text-white">
+          <ChartPieIcon className="my-auto ml-3 h-8 w-8 stroke-2" />
+          <h1 className="invisible my-auto ml-2 h-8 font-roboto text-lg font-bold text-white sm:visible">
             Medical Image Viewer
           </h1>
           <input className="my-auto" type="file" onChange={handleFileChange} />

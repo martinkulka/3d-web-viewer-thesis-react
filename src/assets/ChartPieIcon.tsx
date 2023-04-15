@@ -21,3 +21,5 @@ const ChartPieIcon = ({ className }) => {
     </svg>
   );
 };
+
+export default ChartPieIcon;
