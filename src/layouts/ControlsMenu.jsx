@@ -1,5 +1,6 @@
-import { useState, useContext } from 'react';
+import { useContext } from 'react';
 import { NiivueContext } from '../NiivueContext';
+import FastMarchingForm from './FastMarchingForm';
 import VolumeList from '../components/VolumeList';
 import MenuButtonBar from './MenuButtonBar';
 
@@ -9,7 +10,7 @@ const ControlsMenu = () => {
   return (
     <>
       <MenuButtonBar nv={nv} />
-      <div className="mx-6 flex flex-col space-y-2">
+      <div className="mx-6 flex flex-col space-y-2 mb-8">
         {nv.volumes.map((volume) => (
           <VolumeList
             key={volume.id}
@@ -17,6 +18,7 @@ const ControlsMenu = () => {
           />
         ))}
       </div>
+      <FastMarchingForm />
     </>
   );
 };

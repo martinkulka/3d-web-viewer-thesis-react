@@ -1,5 +1,4 @@
 import { Dialog, Transition } from '@headlessui/react';
-import FastMarchingForm from '../layouts/FastMarchingForm';
 import ControlsMenu from '../layouts/ControlsMenu';
 
 const SlideMenu = ({ show, onClose }) => {
@@ -37,8 +36,6 @@ const SlideMenu = ({ show, onClose }) => {
                     </div>
 
                     <ControlsMenu />
-
-                    {/* <FastMarchingForm /> */}
                   </div>
                 </Dialog.Panel>
               </Transition.Child>

@@ -13,12 +13,11 @@ const NiiViewer = ({ imageUrl }) => {
       },
     ];
 
-    nv.opts.multiplanarForceRender = true;
     nv.attachToCanvas(canvas.current);
     nv.loadVolumes(volumeList);
-    // nv.setSliceMM(true);
     nv.setSliceType(nv.sliceTypeMultiplanar);
-    console.log(nv.volumes);
+    nv.setCornerOrientationText(false);
+    nv.drawScene();
   }, [imageUrl]);
 
   return (

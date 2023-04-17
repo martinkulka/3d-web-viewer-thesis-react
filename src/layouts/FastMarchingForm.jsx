@@ -42,7 +42,6 @@ const FastMarchingForm = () => {
         nv.addVolumeFromUrl({
           url: 'http://127.0.0.1:8000/api/segmentation.nii.gz',
         });
-        console.log(nv.volumes);
       });
   };
 

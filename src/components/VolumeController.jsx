@@ -30,11 +30,6 @@ const VolumeController = ({ volume }) => {
           onChange={handleOpacityChange}
         />
       </div>
-      <h1>cock</h1>
-      <h1>cock</h1>
-      <h1>cock</h1>
-      <h1>cock</h1>
-      <h1>cock</h1>
     </div>
   );
 };

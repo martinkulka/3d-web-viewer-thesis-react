@@ -13,11 +13,16 @@ const MenuButtonBar = ({ nv }) => {
     nv.drawScene();
   };
 
+  const handleRadiologicalConvention = () => {
+    const convention = nv.getRadiologicalConvention();
+    nv.setRadiologicalConvention(!convention);
+  };
+
   return (
     <div className="mx-6 mb-4 flex flex-row justify-between">
       <button
         type="button"
-        className="h-20 w-20 rounded-lg bg-sky-400 hover:bg-sky-300"
+        className="h-24 w-24 rounded-lg bg-sky-400 hover:bg-sky-300"
         onClick={handleClipPlaneToggle}
       >
         <p className="text-semibold m-auto font-roboto text-white">
@@ -26,11 +31,20 @@ const MenuButtonBar = ({ nv }) => {
       </button>
       <button
         type="button"
-        className="h-20 w-20 rounded-lg bg-sky-400 hover:bg-sky-300"
+        className="h-24 w-24 rounded-lg bg-sky-400 hover:bg-sky-300"
         onClick={handle3dCrosshair}
       >
         <p className="text-semibold m-auto font-roboto text-white">
           3D Crosshair
+        </p>
+      </button>
+      <button
+        type="button"
+        className="h-24 w-24 rounded-lg bg-sky-400 hover:bg-sky-300"
+        onClick={handleRadiologicalConvention}
+      >
+        <p className="text-semibold m-auto font-roboto text-white">
+          Radiolog. Convention
         </p>
       </button>
     </div>
