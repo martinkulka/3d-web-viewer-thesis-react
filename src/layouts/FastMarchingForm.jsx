@@ -144,7 +144,7 @@ const FastMarchingForm = () => {
           <input
             type="submit"
             value="Segment"
-            className="mt-4 block h-12 w-32 cursor-pointer rounded-lg bg-sky-400 font-roboto hover:bg-sky-300"
+            className="mt-4 block text-white h-12 w-32 cursor-pointer rounded-lg bg-sky-400 font-roboto hover:bg-sky-300"
           />
         </div>
       </div>

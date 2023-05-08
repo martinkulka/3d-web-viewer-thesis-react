@@ -9,11 +9,11 @@ interface Props {
 const FeatureCard = ({ heading, paragraph, children }: Props) => {
   return (
     <div className="rounded-lg bg-gray-800">
-      <h3 className="m-2 mt-4 text-center font-roboto text-4xl font-semibold text-white">
+      <h3 className="m-2 mt-4 text-center font-roboto text-lg font-semibold text-white md:text-3xl">
         {heading}
       </h3>
       {children}
-      <p className="m-2 mx-4 mb-4 text-center font-roboto text-xl font-normal text-slate-500">
+      <p className="text-md m-2 mx-4 mb-4 text-center font-roboto font-normal text-slate-500 md:text-xl">
         {paragraph}
       </p>
     </div>

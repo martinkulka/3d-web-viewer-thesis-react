@@ -18,6 +18,7 @@ const NiiViewer = ({ imageUrl }) => {
     nv.setSliceType(nv.sliceTypeMultiplanar);
     nv.setCornerOrientationText(false);
     nv.drawScene();
+    console.log(nv.volumes);
   }, [imageUrl]);
 
   return (
