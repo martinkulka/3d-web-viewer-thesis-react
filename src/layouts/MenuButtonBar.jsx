@@ -18,6 +18,12 @@ const MenuButtonBar = ({ nv }) => {
     nv.setRadiologicalConvention(!convention);
   };
 
+  const handleWorldSpace = () => {
+    const isSliceMM = nv.opts.isSliceMM;
+    nv.setSliceMM(!isSliceMM);
+    
+  }
+
   return (
     <div className="mx-6 mb-4 flex flex-row justify-between">
       <button
@@ -45,6 +51,15 @@ const MenuButtonBar = ({ nv }) => {
       >
         <p className="text-semibold m-auto font-roboto text-white">
           Radiolog. Convention
+        </p>
+      </button>
+      <button
+        type="button"
+        className="h-24 w-24 rounded-lg bg-sky-400 hover:bg-sky-300"
+        onClick={handleWorldSpace}
+      >
+        <p className="text-semibold m-auto font-roboto text-white">
+          Toggle World Space
         </p>
       </button>
     </div>

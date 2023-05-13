@@ -1,14 +1,25 @@
-import { useContext, useState, useRef } from 'react';
+import { useContext, useState, useRef, useMemo } from 'react';
 import { NiivueContext } from '../NiivueContext';
+import { LoadingContext } from '../LoadingContext';
 import NiiViewer from '../layouts/NiiViewer';
 import ViewPicker from '../layouts/ViewPicker';
 import MainMenu from '../layouts/MainMenu';
 import BrainIcon from '../assets/BrainIcon';
+import LoadingIndicator from '../layouts/LoadingIndicator';
 
 const ViewerPage = () => {
   const nv = useContext(NiivueContext);
   const [isViewerVisible, setIsViewerVisible] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const fileInputRef = useRef();
+
+  const value = useMemo(
+    () => ({
+      isLoading,
+      setIsLoading,
+    }),
+    [isLoading]
+  );
 
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
@@ -40,15 +51,18 @@ const ViewerPage = () => {
       <NiivueContext.Provider value={nv}>
         <div className="fixed z-20 flex h-12 w-screen justify-start bg-gray-800">
           <BrainIcon className="my-auto ml-3 h-8 w-8 stroke-2" />
-          <h1 className="invisible my-auto ml-2 h-8 font-roboto text-lg font-bold text-white sm:visible">
+          <h1 className="my-auto ml-2 h-8 font-roboto text-lg font-bold text-white">
             Medical Image Viewer
           </h1>
         </div>
+
         {isViewerVisible ? (
           <>
             <NiiViewer imageUrl="http://127.0.0.1:8000/api/input_file.nii.gz" />
             <ViewPicker />
-            <MainMenu />
+            <LoadingContext.Provider value={value}>
+              <MainMenu />
+            </LoadingContext.Provider>
           </>
         ) : (
           <div className="absolute z-10 flex h-full w-full justify-center bg-gray-900 align-middle">
@@ -56,7 +70,7 @@ const ViewerPage = () => {
               className="hidden"
               ref={fileInputRef}
               type="file"
-              accept=".nii.gz"
+              accept=".nii.gz, .nii"
               onChange={handleFileChange}
             />
             <button
@@ -68,6 +82,8 @@ const ViewerPage = () => {
             </button>
           </div>
         )}
+
+        {isLoading && <LoadingIndicator />}
         <div className="absolute inset-x-0 bottom-0 z-20 flex h-12 w-screen justify-center bg-gray-800">
           <h2
             id="intensity"
