@@ -11,10 +11,11 @@ const ControlsMenu = () => {
     <>
       <MenuButtonBar nv={nv} />
       <div className="mx-6 mb-8 flex flex-col space-y-2">
-        {nv.volumes.map((volume) => (
+        {nv.volumes.map((volume, index) => (
           <VolumeList
             key={volume.id}
             volume={nv.getVolumeIndexByID(volume.id)}
+            index={index}
           />
         ))}
       </div>
