@@ -83,7 +83,7 @@ const ViewerPage = () => {
           </div>
         )}
 
-        {isLoading && <LoadingIndicator />}
+        <LoadingIndicator show={isLoading} />
         <div className="absolute inset-x-0 bottom-0 z-20 flex h-12 w-screen justify-center bg-gray-800">
           <h2
             id="intensity"
