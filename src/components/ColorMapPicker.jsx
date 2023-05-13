@@ -22,7 +22,7 @@ const ColorMapPicker = ({ volume }) => {
   const handleColorChange = (colorMap) => {
     nv.volumes[volume].colorMap = colorMap;
     nv.updateGLVolume();
-    
+
     setSelected(colorMap);
   };
 
@@ -33,8 +33,7 @@ const ColorMapPicker = ({ volume }) => {
           <p className="text-md font-roboto text-white">{selected}</p>
         </Listbox.Button>
         <Listbox.Options className="absolute mt-1 w-full rounded-md bg-[#414b5a]">
-          {nv.volumes[volume]
-            .colorMaps()
+          {colorMaps
             .filter((map) => map !== selected)
             .map((map) => (
               <Listbox.Option
