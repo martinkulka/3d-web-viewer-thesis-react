@@ -1,25 +1,18 @@
-import { useContext, useState, useRef, useMemo } from 'react';
+import { useContext, useState, useRef } from 'react';
+import { useAtom } from 'jotai';
 import { NiivueContext } from '../NiivueContext';
-import { LoadingContext } from '../LoadingContext';
 import NiiViewer from '../layouts/NiiViewer';
 import ViewPicker from '../layouts/ViewPicker';
 import MainMenu from '../layouts/MainMenu';
 import BrainIcon from '../assets/BrainIcon';
 import LoadingIndicator from '../layouts/LoadingIndicator';
+import { loadingAtom } from '../atoms/loadingAtom';
 
 const ViewerPage = () => {
   const nv = useContext(NiivueContext);
+  const [loading, setLoading] = useAtom(loadingAtom);
   const [isViewerVisible, setIsViewerVisible] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
   const fileInputRef = useRef();
-
-  const value = useMemo(
-    () => ({
-      isLoading,
-      setIsLoading,
-    }),
-    [isLoading]
-  );
 
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
@@ -60,9 +53,7 @@ const ViewerPage = () => {
           <>
             <NiiViewer imageUrl="http://127.0.0.1:8000/api/input_file.nii.gz" />
             <ViewPicker />
-            <LoadingContext.Provider value={value}>
-              <MainMenu />
-            </LoadingContext.Provider>
+            <MainMenu />
           </>
         ) : (
           <div className="absolute z-10 flex h-full w-full justify-center bg-gray-900 align-middle">
@@ -83,7 +74,7 @@ const ViewerPage = () => {
           </div>
         )}
 
-        <LoadingIndicator show={isLoading} />
+        <LoadingIndicator show={loading} />
         <div className="absolute inset-x-0 bottom-0 z-20 flex h-12 w-screen justify-center bg-gray-800">
           <h2
             id="intensity"

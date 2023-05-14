@@ -3,6 +3,7 @@ import { NiivueContext } from '../NiivueContext';
 import FastMarchingForm from './FastMarchingForm';
 import VolumeList from '../components/VolumeList';
 import MenuButtonBar from './MenuButtonBar';
+import DrawingController from './DrawingController';
 
 const ControlsMenu = () => {
   const nv = useContext(NiivueContext);
@@ -10,6 +11,7 @@ const ControlsMenu = () => {
   return (
     <>
       <MenuButtonBar nv={nv} />
+      <DrawingController nv={nv} />
       <div className="mx-6 mb-8 flex flex-col space-y-2">
         {nv.volumes.map((volume, index) => (
           <VolumeList

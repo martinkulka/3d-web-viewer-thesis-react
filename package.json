@@ -12,6 +12,7 @@
     "@headlessui/react": "^1.7.13",
     "@niivue/niivue": "^0.30.0",
     "axios": "^1.3.4",
+    "jotai": "^2.1.0",
     "react": "^18.2.0",
     "react-debounce-input": "^3.3.0",
     "react-dom": "^18.2.0",

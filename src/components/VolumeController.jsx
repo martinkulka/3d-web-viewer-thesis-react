@@ -17,7 +17,7 @@ const VolumeController = ({ volume }) => {
 
   return (
     <div className="relative mx-6 my-2 pt-6 pb-4">
-      <div className="flex flex-row justify-between pb-2">
+      <div className="mb-2 flex flex-row justify-between">
         <p className="text-md font-roboto text-white">Opacity</p>
         <DebounceInput
           type="range"

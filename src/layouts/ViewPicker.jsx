@@ -39,7 +39,7 @@ const ViewPicker = () => {
     <div className="absolute left-2 bottom-14 z-10">
       <RadioGroup value={selected} onChange={setSelected}>
         <RadioGroup.Label className="sr-only">View</RadioGroup.Label>
-        <div className="flex-column space-y-2">
+        <div className="space-y-2">
           {views.map((view) => (
             <RadioGroup.Option
               key={view}
