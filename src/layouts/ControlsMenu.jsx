@@ -4,6 +4,7 @@ import FastMarchingForm from './FastMarchingForm';
 import VolumeList from '../components/VolumeList';
 import MenuButtonBar from './MenuButtonBar';
 import DrawingController from './DrawingController';
+import AiSegmentation from './AiSegmentation';
 
 const ControlsMenu = () => {
   const nv = useContext(NiivueContext);
@@ -22,6 +23,7 @@ const ControlsMenu = () => {
         ))}
       </div>
       <FastMarchingForm />
+      <AiSegmentation nv={nv} />
     </>
   );
 };

@@ -36,8 +36,10 @@ const DrawingController = ({ nv }) => {
             value="off"
             className={({ checked }) =>
               `${
-                checked && 'border-2 border-white'
-              } cursor-pointer rounded-full bg-gray-700 p-4`
+                checked
+                  ? 'border-white'
+                  : 'border-gray-700 hover:border-gray-600 hover:bg-gray-600'
+              } cursor-pointer rounded-full border-4 bg-gray-700 p-4`
             }
             onClick={() => handleDrawing('off')}
           />
@@ -45,8 +47,10 @@ const DrawingController = ({ nv }) => {
             value="red"
             className={({ checked }) =>
               `${
-                checked && 'border-2 border-white'
-              } cursor-pointer rounded-full bg-red-600 p-4`
+                checked
+                  ? 'border-white'
+                  : 'border-red-600 hover:border-red-500 hover:bg-red-500'
+              } cursor-pointer rounded-full border-4 bg-red-600 p-4`
             }
             onClick={() => handleDrawing('red')}
           />
@@ -54,8 +58,10 @@ const DrawingController = ({ nv }) => {
             value="green"
             className={({ checked }) =>
               `${
-                checked && 'border-2 border-white'
-              } cursor-pointer rounded-full bg-green-600 p-4`
+                checked
+                  ? 'border-white'
+                  : 'border-green-600 hover:border-green-500 hover:bg-green-500'
+              } cursor-pointer rounded-full border-4 bg-green-600 p-4`
             }
             onClick={() => handleDrawing('green')}
           />
@@ -63,8 +69,10 @@ const DrawingController = ({ nv }) => {
             value="blue"
             className={({ checked }) =>
               `${
-                checked && 'border-2 border-white'
-              } cursor-pointer rounded-full bg-blue-600 p-4`
+                checked
+                  ? 'border-white'
+                  : 'border-blue-600 hover:border-blue-500 hover:bg-blue-500'
+              } cursor-pointer rounded-full border-4 bg-blue-600 p-4`
             }
             onClick={() => handleDrawing('blue')}
           />
