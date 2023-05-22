@@ -5,6 +5,7 @@ import VolumeList from '../components/VolumeList';
 import MenuButtonBar from './MenuButtonBar';
 import DrawingController from './DrawingController';
 import AiSegmentation from './AiSegmentation';
+import SpleenSegmentation from './SpleenSegmentation';
 
 const ControlsMenu = () => {
   const nv = useContext(NiivueContext);
@@ -24,6 +25,7 @@ const ControlsMenu = () => {
       </div>
       <FastMarchingForm />
       <AiSegmentation nv={nv} />
+      <SpleenSegmentation nv={nv} />
     </>
   );
 };
