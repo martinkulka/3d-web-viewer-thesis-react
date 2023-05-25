@@ -8,6 +8,7 @@ const handleIntensityChange = (data) => {
 
 const nv = new Niivue({
   backColor: [0.066, 0.094, 0.1529, 1],
+  // backColor: [1, 1, 1, 1],
   crosshairColor: [0.066, 0.094, 0.1529, 1],
   dragAndDropEnabled: true,
   onLocationChange: handleIntensityChange,
